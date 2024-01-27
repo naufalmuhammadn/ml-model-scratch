@@ -1,0 +1,5 @@
+# Ignore week2.ipynb file
+week2.ipynb
+
+# Ignore the pycache folder within scratch/neighbors/
+scratch/neighbors/__pycache__/
