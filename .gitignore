@@ -1,5 +1,7 @@
-# Ignore week2.ipynb file
 week2.ipynb
+week3.ipynb
+week4.ipynb
 
 # Ignore the pycache folder within scratch/neighbors/
 scratch/neighbors/__pycache__/
+scratch/linear_model/__pycache__/
