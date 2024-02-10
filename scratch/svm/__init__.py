@@ -1,5 +1,5 @@
-from ._base import SupportVectorMachine
+from ._base import SVC
 
 __all__ = [
-    "SupportVectorMachine"
+    "SVC"
 ]
