@@ -73,13 +73,13 @@ class BaseEnsemble:
         self.n_estimators = n_estimators
         self.max_features = max_features
         self.random_state = random_state
-        self.classes = list(sorted(set(y)))
 
     def fit(self, X, y):
         X = np.array(X).copy()
         y = np.array(y).copy()
 
         self.n_samples, self.n_features = X.shape
+        self.classes = list(sorted(set(y)))
 
         self.estimators_ = [copy.deepcopy(self.estimator) for i in range(self.n_estimators)]
 
