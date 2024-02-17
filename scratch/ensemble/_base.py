@@ -49,18 +49,6 @@ def _predict_aggregate(y_ensemble, aggregate_func, classes):
 
     return y_pred
 
-def majority_vote(y_samples, classes):
-    y_pred_proba_col = []
-
-    for cls_ in classes:
-        cls_proba = np.sum(y_samples==cls_)/len(y_samples)
-        y_pred_proba_col.append(cls_proba)
-
-    max_proba_idx_col = np.argmax(y_pred_proba_col)
-    
-    return classes[max_proba_idx_col]
-
-
 class BaseEnsemble:
     def __init__(
         self,
@@ -123,6 +111,17 @@ class BaseEnsemble:
                                             feature_indices=self.feature_indices,
                                             X = X)
         
-        y_pred = _predict_aggregate(y_pred_ensemble, majority_vote, self.classes)
+        y_pred = _predict_aggregate(y_pred_ensemble, self.majority_vote, self.classes)
 
         return y_pred
+    
+    def majority_vote(y_samples, classes):
+        y_pred_proba_col = []
+
+        for cls_ in classes:
+            cls_proba = np.sum(y_samples==cls_)/len(y_samples)
+            y_pred_proba_col.append(cls_proba)
+
+        max_proba_idx_col = np.argmax(y_pred_proba_col)
+        
+        return classes[max_proba_idx_col]
